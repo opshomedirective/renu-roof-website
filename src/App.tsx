@@ -8,6 +8,7 @@ import WestTexasRoofs from "./pages/WestTexasRoofs";
 import Offers from "./pages/Offers";
 import About from "./pages/About";
 import ServiceArea from "./pages/ServiceArea";
+import AreaDetail from "./pages/AreaDetail";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
@@ -36,6 +37,7 @@ export default function App() {
           <Route path="/offers" element={<Offers />} />
           <Route path="/about" element={<About />} />
           <Route path="/service-area" element={<ServiceArea />} />
+          <Route path="/service-area/:slug" element={<AreaDetail />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Route>

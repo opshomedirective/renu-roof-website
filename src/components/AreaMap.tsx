@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { AREAS, BUSINESS } from "../data/site";
+import { useNavigate } from "react-router-dom";
+import { AREAS, BUSINESS, areaPath } from "../data/site";
 
 /**
  * Radar-style service-area map. Towns are plotted from real lat/lng
  * inside the 50-mile radius centered on ZIP 79705 (Midland) — no map API.
+ * Every dot is a link to that town's SEO page; `highlight` marks one town.
  */
 const SIZE = 600;
 const C = SIZE / 2;
@@ -30,8 +32,9 @@ const LABELS: Record<string, [number, number, "start" | "end" | "middle"]> = {
   Goldsmith: [-10, 4, "end"],
 };
 
-export default function AreaMap() {
+export default function AreaMap({ highlight }: { highlight?: string }) {
   const [hover, setHover] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   return (
     <div className="relative mx-auto w-full max-w-[640px]">
@@ -80,11 +83,21 @@ export default function AreaMap() {
 
         {AREAS.filter((a) => a.name !== "Midland").map((a) => {
           const { x, y } = project(a.lat, a.lng);
-          const on = hover === a.name;
+          const on = hover === a.name || highlight === a.name;
           const lab = LABELS[a.name];
           const [dx, dy, anchor] = lab ?? [10, 4, "start"];
           return (
-            <g key={a.name} onMouseEnter={() => setHover(a.name)} onMouseLeave={() => setHover(null)} className="cursor-pointer">
+            <g
+              key={a.name}
+              role="link"
+              tabIndex={0}
+              aria-label={`Roof rejuvenation in ${a.name}, TX`}
+              onClick={() => navigate(areaPath(a))}
+              onKeyDown={(e) => e.key === "Enter" && navigate(areaPath(a))}
+              onMouseEnter={() => setHover(a.name)}
+              onMouseLeave={() => setHover(null)}
+              className="cursor-pointer outline-none"
+            >
               <circle cx={x} cy={y} r={12} fill="transparent" />
               <circle cx={x} cy={y} r={on ? 6.5 : 3.5} fill={on ? SUN : "#ffffff"} />
               {(lab || on) && (
@@ -107,6 +120,7 @@ export default function AreaMap() {
           );
         })}
 
+        <g role="link" tabIndex={0} aria-label="Roof rejuvenation in Midland, TX" className="cursor-pointer" onClick={() => navigate("/service-area/midland")}>
         <circle cx={C} cy={C} r="10" fill={SUN}>
           <animate attributeName="r" values="8;34;8" dur="2.4s" repeatCount="indefinite" />
           <animate attributeName="opacity" values=".6;0;.6" dur="2.4s" repeatCount="indefinite" />
@@ -121,11 +135,12 @@ export default function AreaMap() {
         <text x={C} y={C + 30} textAnchor="middle" fill="#fff" fontSize="14" fontWeight="800" fontFamily="DM Sans" paintOrder="stroke" stroke="#0b1c2f" strokeWidth="4">
           Midland
         </text>
+        </g>
       </svg>
       <div className="glass absolute bottom-2 left-2 rounded-xl px-4 py-3 text-xs text-white">
         <p className="font-bold tracking-widest text-amber uppercase">Coverage</p>
         <p className="font-display text-lg font-extrabold">{radiusMiles}-mile radius</p>
-        <p className="text-mist">around ZIP {BUSINESS.serviceCenter.zip} · hover a dot</p>
+        <p className="text-mist">around ZIP {BUSINESS.serviceCenter.zip} · click a town</p>
       </div>
     </div>
   );

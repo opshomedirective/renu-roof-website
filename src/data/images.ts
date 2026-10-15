@@ -35,7 +35,6 @@ export const IMG = {
   ranchTan: p("brick-ranch-home-tan.jpg"),
   ranchLandscaped: p("brick-ranch-home-landscaped.jpg"),
   stoneRanch: p("brick-stone-ranch-home.jpg"),
-  xeriscape: p("texas-home-xeriscape.jpg"),
 
   // Roofs & product
   shinglesClose: p("asphalt-shingles-closeup.jpg"),

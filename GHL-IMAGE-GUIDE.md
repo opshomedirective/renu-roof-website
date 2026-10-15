@@ -4,6 +4,8 @@ This guide lists every image on the site, its filename, and where it goes.
 
 **How to use this guide in GoHighLevel**
 
+> ⚠️ **The GitHub repo will be deleted.** Every file below must be uploaded to and served from the GHL Media Library. Never link to GitHub or Unsplash.
+
 1. Upload every file in `/public/images` (also delivered in the `imagenes-para-ghl` folder) to the GHL Media Library. Do not rename them.
 2. When this guide names a file, use the Media Library file with that exact name.
 3. Use only the images on this list. Do not use GHL stock photos, AI-generated images or placeholders.
@@ -23,7 +25,7 @@ All photos are licensed stock (Unsplash License: free for commercial use, no att
 | `renu-roof-logo.png` | Header (left), mobile menu, and footer (inside a cream rounded box). The PNG is transparent with **navy and red lettering**, so place it only on light backgrounds (cream or white). |
 | `renu-roof-favicon.png` | Browser favicon: the Texas flag and roof emblem from the logo. |
 | `gonano-logo-white.png` | Official GoNano logo, **white version for navy backgrounds**. Use it inside the "Certified GoNano Contractor" badge in the Home hero, the Home GoNano tech section, the Roof Rejuvenation page ("How the treatment is designed to work") and the footer. |
-| `gonano-logo.png` | Official GoNano logo, **dark text for light backgrounds**. Use it inside the "Certified GoNano Contractor" badge on the About page ("Renew before you replace"). |
+| `gonano-logo.png` | Official GoNano logo, **dark text for light backgrounds**. Use it inside the "Certified GoNano Contractor" badge on the About page ("Renew before you replace") and on every service-area town page. |
 
 ---
 
@@ -31,7 +33,7 @@ All photos are licensed stock (Unsplash License: free for commercial use, no att
 
 | # | Section | File(s) |
 |---|---|---|
-| 1 | **Hero background slideshow.** The 4 images crossfade every 6.5 seconds with a slow zoom, in this order. | `brick-ranch-home-hip-roof.jpg` → `pumpjack-sunset-permian.jpg` → `texas-home-xeriscape.jpg` → `brick-ranch-home-landscaped.jpg` |
+| 1 | **Hero background slideshow.** The 4 images crossfade every 6.5 seconds with a slow zoom, in this order. | `brick-ranch-home-hip-roof.jpg` → `pumpjack-sunset-permian.jpg` → `brick-stone-ranch-home.jpg` → `brick-ranch-home-landscaped.jpg` |
 | 2 | "Protect the roof you have": the 2 service cards | The **hero** image of each service (see section 3) |
 | 3 | "Nano-scale protection": the **NanoShield** animation | No image. It is an animated SVG. |
 | 4 | "Give sun-baked shingles a second life": **Before/After slider**, left side ("Before · sun-faded") | `asphalt-shingles-closeup.jpg`. The right side ("After · rejuvenated") is an SVG illustration, not a photo, and its caption says so. |
@@ -90,7 +92,7 @@ The Roof Rejuvenation page also includes the NanoShield animated SVG, which uses
 | Section | File |
 |---|---|
 | Hero | `brick-ranch-home-tan.jpg` |
-| "Claim your offer in three steps": photo with the "$500 OFF" badge | `texas-home-xeriscape.jpg` |
+| "Claim your offer in three steps": photo with the "$500 OFF" badge | `brick-ranch-home-wide.jpg` |
 | Bottom CTA card | `brick-stone-ranch-home.jpg` |
 
 ### About `/about`
@@ -109,6 +111,19 @@ The Roof Rejuvenation page also includes the NanoShield animated SVG, which uses
 | Hero | `texas-mesa-desert.jpg` |
 | Bottom CTA card | `west-texas-road-mountains.jpg` |
 
+### Service-area town pages `/service-area/<town>` (17 pages)
+
+| Section | File |
+|---|---|
+| Hero, towns in **Midland County** (Midland, Greenwood) | `brick-ranch-home-hip-roof.jpg` |
+| Hero, towns in **Odessa & Ector County** (Odessa, Gardendale, West Odessa, Goldsmith, Penwell) | `brick-ranch-home-tan.jpg` |
+| Hero, towns in **Martin, Andrews & Dawson** (Stanton, Tarzan, Andrews, Ackerly, Lamesa) | `pumpjack-golden-field.jpg` |
+| Hero, towns in **Big Spring & South** (Big Spring, Forsan, Knott, Garden City, Crane) | `brick-ranch-home-landscaped.jpg` |
+| GoNano badge (light) | `gonano-logo.png` |
+| Service cards | The hero image of each service (see section 3) |
+| Threat tabs | Same 4 photos as Home #6 |
+| Bottom CTA card | `pumpjack-sunset-permian.jpg` |
+
 ### Contact `/contact`
 
 | Section | File |
@@ -123,13 +138,13 @@ The Roof Rejuvenation page also includes the NanoShield animated SVG, which uses
 
 ---
 
-## 5. Full file list (31 files)
+## 5. Full file list (30 files)
 
 **Brand (4):** `renu-roof-logo.png`, `renu-roof-favicon.png`, `gonano-logo.png`, `gonano-logo-white.png`
 
 **West Texas & Permian Basin (9):** `pumpjack-sunset-permian.jpg`, `pumpjack-golden-field.jpg`, `west-texas-highway-desert.jpg`, `west-texas-road-mountains.jpg`, `west-texas-farmland-sunset.jpg`, `desert-sunset-ocotillo.jpg`, `west-texas-sunset-sky.jpg`, `texas-mesa-desert.jpg`, `texas-flag-blue-sky.jpg`
 
-**Homes (6):** `brick-ranch-home-wide.jpg`, `brick-ranch-home-hip-roof.jpg`, `brick-ranch-home-tan.jpg`, `brick-ranch-home-landscaped.jpg`, `brick-stone-ranch-home.jpg`, `texas-home-xeriscape.jpg`
+**Homes (5):** `brick-ranch-home-wide.jpg`, `brick-ranch-home-hip-roof.jpg`, `brick-ranch-home-tan.jpg`, `brick-ranch-home-landscaped.jpg`, `brick-stone-ranch-home.jpg`
 
 **Roofs & product (5):** `asphalt-shingles-closeup.jpg`, `shingle-roof-plane-sky.jpg`, `dark-shingle-roof-dormer.jpg`, `inspectors-on-roof.jpg`, `water-beading-hydrophobic.jpg`
 

@@ -45,7 +45,7 @@ export default function Offers() {
       <section className="dunes-dark bg-navy py-16 text-white lg:py-24">
         <div className="wrap grid items-center gap-14 lg:grid-cols-2">
           <Reveal className="relative overflow-hidden rounded-2xl">
-            <img src={IMG.xeriscape} alt="West Texas home with desert landscaping" className="aspect-[4/3] w-full object-cover" loading="lazy" />
+            <img src={IMG.ranchWide} alt="Brick ranch home with an asphalt shingle roof" className="aspect-[4/3] w-full object-cover" loading="lazy" />
             <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent" />
             <div className="absolute bottom-6 left-6 flex items-center gap-3 rounded-md bg-red px-5 py-4 text-white">
               <BadgeDollarSign className="h-8 w-8" strokeWidth={1.5} />

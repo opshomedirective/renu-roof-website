@@ -8,6 +8,21 @@ Copy everything inside the box below and paste it into the GoHighLevel AI builde
 You are rebuilding a finished, approved website inside GoHighLevel.
 Do NOT redesign it. CLONE it, page by page and section by section.
 
+⚠️ CRITICAL — EVERYTHING MUST BE HOSTED IN GHL:
+The GitHub repository below is TEMPORARY and WILL BE DELETED after this
+build. The finished GHL site must not depend on it in any way.
+  • Download EVERY image, logo, favicon and graphic used on the site
+    and upload it to the GHL Media Library. Use only GHL Media Library URLs.
+  • NEVER hotlink or reference github.com, raw.githubusercontent.com,
+    images.unsplash.com or any other external file URL.
+  • Rebuild every SVG illustration and animation (NanoShield, Star Seal,
+    flag stripe, radar map, etc.) as inline code inside GHL custom
+    code/HTML elements. Copy the SVG markup into the page; do not link to
+    a file in the repo.
+  • Google Fonts (Big Shoulders Display, DM Sans) may load from Google.
+  • Before you finish, check that no URL on any page contains "github"
+    or "unsplash".
+
 SOURCE REPOSITORY (public):
 https://github.com/opshomedirective/renu-roof-website
 Domain: renuroofwesttx.com
@@ -47,9 +62,86 @@ insurance-claim help or any other service.
 /west-texas-roofs                   West Texas roof guide (sun, hail, wind, swings)
 /offers                             $500 off + free inspection + financing
 /about
-/service-area
+/service-area                       Service area hub (radar map + all towns)
+/service-area/<town>                ONE SEO PAGE PER TOWN (17 pages, see below)
 /contact
 404 page
+
+SERVICE-AREA TOWN PAGES (essential for local SEO; build ALL of them):
+/service-area/midland                Midland, TX (Midland County)
+/service-area/greenwood              Greenwood, TX (Midland County)
+/service-area/odessa                 Odessa, TX (Ector County)
+/service-area/gardendale             Gardendale, TX (Ector County)
+/service-area/west-odessa            West Odessa, TX (Ector County)
+/service-area/goldsmith              Goldsmith, TX (Ector County)
+/service-area/penwell                Penwell, TX (Ector County)
+/service-area/stanton                Stanton, TX (Martin County)
+/service-area/tarzan                 Tarzan, TX (Martin County)
+/service-area/andrews                Andrews, TX (Andrews County)
+/service-area/ackerly                Ackerly, TX (Dawson County)
+/service-area/lamesa                 Lamesa, TX (Dawson County)
+/service-area/big-spring             Big Spring, TX (Howard County)
+/service-area/forsan                 Forsan, TX (Howard County)
+/service-area/knott                  Knott, TX (Howard County)
+/service-area/garden-city            Garden City, TX (Glasscock County)
+/service-area/crane                  Crane, TX (Crane County)
+
+Every town page uses ONE template (src/pages/AreaDetail.tsx) and the data
+in src/data/site.ts → AREAS (name, county, coordinates, local note):
+  • Its own <title>: "Roof Rejuvenation in {Town}, TX | ReNu Roof West Texas"
+  • Its own meta description (see useSEO in AreaDetail.tsx)
+  • H1: "Roof rejuvenation in {Town}, TX."
+  • Hero (photo by region, see GHL-IMAGE-GUIDE.md) + eyebrow "Service
+    area · {County}" + the town's unique note + 2 buttons
+  • Local intro with the town name, distance and direction from Midland
+    (e.g. "about 20 miles southwest of Midland"), the GoNano badge, and a
+    "Quick facts" card (County, distance, hours, offers) with links to
+    the 4 NEAREST towns' pages
+  • Services cards → West Texas threat tabs → Offers → radar map with
+    THIS town highlighted → localized FAQ (4 questions using the town
+    name) → lead form → CTA "Don't replace your {Town} roof. ReNu it."
+  Use these exact values on each page (distance from Midland, the 4
+  nearest towns to link, and the unique note):
+  Midland (Midland County) — Home base. Nearby: Greenwood, Gardendale, Stanton, Odessa.
+    Note: Our home base — the Tall City and the heart of the Permian Basin.
+  Greenwood (Midland County) — about 11 miles southeast of Midland. Nearby: Midland, Stanton, Garden City, Odessa.
+    Note: A rural community just east of Midland, with many homes on acreage.
+  Odessa (Ector County) — about 20 miles southwest of Midland. Nearby: West Odessa, Gardendale, Penwell, Goldsmith.
+    Note: The Ector County seat and Midland's neighbor to the west — and our next area of expansion.
+  Gardendale (Ector County) — about 17 miles west of Midland. Nearby: Odessa, West Odessa, Goldsmith, Midland.
+    Note: An unincorporated community north of Odessa with many homes on larger lots.
+  West Odessa (Ector County) — about 27 miles southwest of Midland. Nearby: Odessa, Penwell, Goldsmith, Gardendale.
+    Note: The unincorporated area west of Odessa, with many homes on larger lots.
+  Goldsmith (Ector County) — about 32 miles west of Midland. Nearby: West Odessa, Gardendale, Odessa, Penwell.
+    Note: A small Ector County town northwest of Odessa.
+  Penwell (Ector County) — about 35 miles southwest of Midland. Nearby: West Odessa, Odessa, Goldsmith, Gardendale.
+    Note: A small community west of Odessa along I-20.
+  Stanton (Martin County) — about 19 miles northeast of Midland. Nearby: Tarzan, Greenwood, Midland, Big Spring.
+    Note: The Martin County seat, just east of Midland along I-20.
+  Tarzan (Martin County) — about 23 miles north of Midland. Nearby: Stanton, Knott, Ackerly, Midland.
+    Note: A rural Martin County community north of Midland.
+  Andrews (Andrews County) — about 35 miles northwest of Midland. Nearby: Gardendale, Goldsmith, West Odessa, Tarzan.
+    Note: The Andrews County seat, northwest of Midland.
+  Ackerly (Dawson County) — about 42 miles northeast of Midland. Nearby: Knott, Lamesa, Tarzan, Big Spring.
+    Note: A small town on the Dawson–Martin county line.
+  Lamesa (Dawson County) — about 52 miles north of Midland. Nearby: Ackerly, Knott, Tarzan, Stanton.
+    Note: The Dawson County seat, north of Midland on US-87.
+  Big Spring (Howard County) — about 39 miles northeast of Midland. Nearby: Forsan, Knott, Stanton, Ackerly.
+    Note: The Howard County seat, east of Midland along I-20.
+  Forsan (Howard County) — about 42 miles east of Midland. Nearby: Big Spring, Garden City, Stanton, Knott.
+    Note: A small Howard County town south of Big Spring.
+  Knott (Howard County) — about 39 miles northeast of Midland. Nearby: Ackerly, Big Spring, Tarzan, Stanton.
+    Note: A rural Howard County community northwest of Big Spring.
+  Garden City (Glasscock County) — about 36 miles east of Midland. Nearby: Forsan, Stanton, Greenwood, Big Spring.
+    Note: The Glasscock County seat, southeast of Midland.
+  Crane (Crane County) — about 44 miles south of Midland. Nearby: Penwell, Odessa, West Odessa, Greenwood.
+    Note: The Crane County seat, south of Odessa.
+
+INTERNAL LINKS TO THE TOWN PAGES (all clickable):
+  • /service-area → every town card links to its page
+  • Radar map → every town dot is a link to its page (Midland = center)
+  • Footer "Serving" → every town name links to its page
+  • Town marquee → every town name links to its page
 
 Home sections, in order:
 Hero slideshow ("DON'T REPLACE YOUR ROOF. ReNu it." + rotating $500 OFF
@@ -240,6 +332,11 @@ alt text from the code, and set the favicon to renu-roof-favicon.png.
 9. QUALITY CHECK BEFORE YOU FINISH
 ══════════════════════════════════════════════════════════════════
 □ Every page above exists, with the same section order, on desktop and mobile.
+□ All 17 /service-area/<town> pages exist, each with its own title, meta
+  description and H1, and every town link (hub cards, map dots, footer,
+  marquee) opens the right page.
+□ Every image and asset is served from the GHL Media Library. No URL
+  contains "github" or "unsplash".
 □ The header is white and the logo is readable on every page.
 □ Only navy, white and Texas red are used. No orange or gold anywhere.
 □ The Star Seal and the Certified GoNano Contractor badge are visible.

@@ -25,7 +25,7 @@ import { useSEO } from "../seo";
 const SLIDES = [
   { src: IMG.ranchHip, alt: "Brick ranch home with an asphalt shingle roof" },
   { src: IMG.pumpjackSunset, alt: "Pumpjack silhouetted against a West Texas sunset" },
-  { src: IMG.xeriscape, alt: "West Texas home with desert landscaping" },
+  { src: IMG.stoneRanch, alt: "Brick and stone ranch home with a shingle roof" },
   { src: IMG.ranchLandscaped, alt: "Brick home with a hip shingle roof" },
 ];
 

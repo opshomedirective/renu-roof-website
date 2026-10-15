@@ -108,32 +108,71 @@ export const HEALTH_CHECK = [
   { q: "Has it been through hail?", options: [["Not that I know of", 0], ["Small hail", 1], ["Big hail, no damage seen", 1], ["Visible hail damage", 3]] },
 ] as const;
 
-export type Area = { name: string; lat: number; lng: number; region: string };
+export type Area = {
+  name: string;
+  slug: string;
+  county: string;
+  lat: number;
+  lng: number;
+  region: string;
+  /** One unique, factual line about the town (used on its SEO page). */
+  note: string;
+};
+
+const slugify = (n: string) => n.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+const A = (name: string, county: string, lat: number, lng: number, region: string, note: string): Area => ({ name, slug: slugify(name), county, lat, lng, region, note });
 
 export const AREAS: Area[] = [
-  { name: "Midland", lat: 31.9973, lng: -102.0779, region: "Midland County" },
-  { name: "Greenwood", lat: 31.9013, lng: -101.9238, region: "Midland County" },
-  { name: "Tarzan", lat: 32.3087, lng: -101.9629, region: "Midland County" },
-  { name: "Odessa", lat: 31.8457, lng: -102.3676, region: "Odessa & Ector County" },
-  { name: "Gardendale", lat: 32.0204, lng: -102.3626, region: "Odessa & Ector County" },
-  { name: "West Odessa", lat: 31.8421, lng: -102.4988, region: "Odessa & Ector County" },
-  { name: "Goldsmith", lat: 31.9821, lng: -102.6168, region: "Odessa & Ector County" },
-  { name: "Penwell", lat: 31.7299, lng: -102.588, region: "Odessa & Ector County" },
-  { name: "Stanton", lat: 32.1293, lng: -101.7882, region: "Martin, Andrews & Dawson" },
-  { name: "Andrews", lat: 32.3187, lng: -102.5457, region: "Martin, Andrews & Dawson" },
-  { name: "Ackerly", lat: 32.5276, lng: -101.7165, region: "Martin, Andrews & Dawson" },
-  { name: "Lamesa", lat: 32.7376, lng: -101.9507, region: "Martin, Andrews & Dawson" },
-  { name: "Big Spring", lat: 32.2504, lng: -101.4787, region: "Big Spring & South" },
-  { name: "Forsan", lat: 32.1101, lng: -101.3654, region: "Big Spring & South" },
-  { name: "Knott", lat: 32.4157, lng: -101.6348, region: "Big Spring & South" },
-  { name: "Garden City", lat: 31.864, lng: -101.481, region: "Big Spring & South" },
-  { name: "Crane", lat: 31.3974, lng: -102.3501, region: "Big Spring & South" },
+  A("Midland", "Midland County", 31.9973, -102.0779, "Midland County", "Our home base — the Tall City and the heart of the Permian Basin."),
+  A("Greenwood", "Midland County", 31.9013, -101.9238, "Midland County", "A rural community just east of Midland, with many homes on acreage."),
+  A("Odessa", "Ector County", 31.8457, -102.3676, "Odessa & Ector County", "The Ector County seat and Midland's neighbor to the west — and our next area of expansion."),
+  A("Gardendale", "Ector County", 32.0204, -102.3626, "Odessa & Ector County", "An unincorporated community north of Odessa with many homes on larger lots."),
+  A("West Odessa", "Ector County", 31.8421, -102.4988, "Odessa & Ector County", "The unincorporated area west of Odessa, with many homes on larger lots."),
+  A("Goldsmith", "Ector County", 31.9821, -102.6168, "Odessa & Ector County", "A small Ector County town northwest of Odessa."),
+  A("Penwell", "Ector County", 31.7299, -102.588, "Odessa & Ector County", "A small community west of Odessa along I-20."),
+  A("Stanton", "Martin County", 32.1293, -101.7882, "Martin, Andrews & Dawson", "The Martin County seat, just east of Midland along I-20."),
+  A("Tarzan", "Martin County", 32.3087, -101.9629, "Martin, Andrews & Dawson", "A rural Martin County community north of Midland."),
+  A("Andrews", "Andrews County", 32.3187, -102.5457, "Martin, Andrews & Dawson", "The Andrews County seat, northwest of Midland."),
+  A("Ackerly", "Dawson County", 32.5276, -101.7165, "Martin, Andrews & Dawson", "A small town on the Dawson–Martin county line."),
+  A("Lamesa", "Dawson County", 32.7376, -101.9507, "Martin, Andrews & Dawson", "The Dawson County seat, north of Midland on US-87."),
+  A("Big Spring", "Howard County", 32.2504, -101.4787, "Big Spring & South", "The Howard County seat, east of Midland along I-20."),
+  A("Forsan", "Howard County", 32.1101, -101.3654, "Big Spring & South", "A small Howard County town south of Big Spring."),
+  A("Knott", "Howard County", 32.4157, -101.6348, "Big Spring & South", "A rural Howard County community northwest of Big Spring."),
+  A("Garden City", "Glasscock County", 31.864, -101.481, "Big Spring & South", "The Glasscock County seat, southeast of Midland."),
+  A("Crane", "Crane County", 31.3974, -102.3501, "Big Spring & South", "The Crane County seat, south of Odessa."),
 ];
 
+export const getArea = (slug: string) => AREAS.find((a) => a.slug === slug);
+export const areaPath = (a: Pick<Area, "slug">) => `/service-area/${a.slug}`;
+
+const toRad = (d: number) => (d * Math.PI) / 180;
+/** Straight-line miles between two points. */
+export function milesBetween(a: { lat: number; lng: number }, b: { lat: number; lng: number }) {
+  const R = 3958.8;
+  const dLat = toRad(b.lat - a.lat);
+  const dLng = toRad(b.lng - a.lng);
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(a.lat)) * Math.cos(toRad(b.lat)) * Math.sin(dLng / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(h));
+}
+/** Compass direction from a to b (e.g. "northwest"). */
+export function directionFrom(a: { lat: number; lng: number }, b: { lat: number; lng: number }) {
+  const y = b.lat - a.lat;
+  const x = (b.lng - a.lng) * Math.cos(toRad(a.lat));
+  const deg = (Math.atan2(x, y) * 180) / Math.PI;
+  const dirs = ["north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest"];
+  return dirs[Math.round(((deg + 360) % 360) / 45) % 8];
+}
+export const nearestAreas = (a: Area, n = 4) =>
+  AREAS.filter((x) => x.slug !== a.slug)
+    .map((x) => ({ x, d: milesBetween(a, x) }))
+    .sort((p, q) => p.d - q.d)
+    .slice(0, n)
+    .map((p) => p.x);
+
 export const REGIONS = [
-  { name: "Midland County", body: "Home base. Midland, Greenwood and Tarzan — usually the fastest inspections." },
+  { name: "Midland County", body: "Home base. Midland and Greenwood — usually the fastest inspections." },
   { name: "Odessa & Ector County", body: "Odessa, Gardendale, West Odessa, Goldsmith and Penwell. We're actively expanding into Odessa." },
-  { name: "Martin, Andrews & Dawson", body: "Stanton, Andrews, Ackerly and Lamesa." },
+  { name: "Martin, Andrews & Dawson", body: "Stanton, Tarzan, Andrews, Ackerly and Lamesa." },
   { name: "Big Spring & South", body: "Big Spring, Forsan, Knott, Garden City and Crane." },
 ] as const;
 

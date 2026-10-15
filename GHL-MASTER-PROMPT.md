@@ -52,8 +52,8 @@ insurance-claim help or any other service.
 404 page
 
 Home sections, in order:
-Hero slideshow ("Don't replace your roof. ReNu it." + floating $500 OFF
-card) → 4 trust cards → Services (2 cards + navy "$500 OFF" card) →
+Hero slideshow ("DON'T REPLACE YOUR ROOF. ReNu it." + rotating $500 OFF
+Star Seal + Certified GoNano badge) → 4 trust cards → Services (2 cards + navy "$500 OFF" card) →
 GoNano tech section (navy) with the NanoShield animation + 4 benefit
 cards → "What is roof rejuvenation?" + Before/After slider → "Renew vs.
 replace" (comparison table / candidate-check tabs) → West Texas threat
@@ -62,7 +62,7 @@ tabs → Offers (3 cards) → "Local, honest — and owner-inspected" (navy)
 marquee → service-area radar map (navy) → FAQ → lead form section.
 
 Both service pages share ONE template (src/pages/ServiceDetail.tsx):
-Hero (photo, title, tagline, 2 buttons, 3 badges, horizon divider) →
+Hero (photo, title, tagline, 2 buttons, 3 badges, flag-stripe divider) →
 Intro (headline, 2 paragraphs, 2 overlapping photos) → [rejuvenation
 page only: NanoShield section] → "Know the signs" grid of 6 cards →
 "What's included" checklist + 4-step timeline + sticky multi-step form →
@@ -152,7 +152,7 @@ Header (solid white with a bottom border; gets a shadow and shrinks on scroll):
     Service Area · Contact (active link: red text + red underline)
   • Red "Free Inspection" button
 
-Mobile: a hamburger opens a full-screen cream menu (pages + navy
+Mobile: a hamburger opens a full-screen light menu (pages + navy
 "$500 OFF" card + call button), plus a sticky bottom bar that is always
 visible with "Call now" (tel:+14323494299) and "Free inspection".
 
@@ -243,7 +243,7 @@ alt text from the code, and set the favicon to renu-roof-favicon.png.
 □ The header is white and the logo is readable on every page.
 □ Only navy, white and Texas red are used. No orange or gold anywhere.
 □ The Star Seal and the Certified GoNano Contractor badge are visible.
-□ The Home hero slideshow works and the $500 card shows.
+□ The Home hero slideshow works and the rotating $500 Star Seal shows.
 □ NanoShield, Before/After, Renew vs. Replace, threat tabs, candidate
   check and radar map all work.
 □ No street address, EIN or personal email anywhere.
